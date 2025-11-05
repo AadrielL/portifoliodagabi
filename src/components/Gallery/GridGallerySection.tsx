@@ -1,7 +1,7 @@
-// src/components/Gallery/GridGallerySection.tsx
+// src/components/Gallery/GridGallerySection.tsx - CÓDIGO FINAL E CORRIGIDO (Tipagem)
 
 "use client";
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useMemo } from 'react'; // 🚨 Adicionado useMemo
 import { motion, useInView } from 'framer-motion';
 import Image from 'next/image';
 import { useTheme } from '@/context/ThemeContext';
@@ -10,13 +10,23 @@ import { useTheme } from '@/context/ThemeContext';
 // Importações necessárias
 import { GRID_GALLERY_DATA } from '@/data/GalleryData';
 import ImageViewerModal from './ImageViewerModal';
+import { IPhotoItem } from '@/types/IContent'; // Importe seu tipo IPhotoItem se ainda não fez
+
+// Se o ImageViewerModal usar uma interface ImageItem com ID: number, defina-a aqui para referência:
+// (Você deve verificar a interface ImageViewerModalProps no arquivo ImageViewerModal.tsx)
+// interface ImageItem {
+//     id: number;
+//     url: string;
+//     description: string;
+//     // ... outros campos necessários pelo modal
+// }
+
 
 const GridGallerySection: React.FC = () => {
     const { currentTheme } = useTheme();
 
     // Animação de Scroll (Fade-in e Slide-up)
     const ref = useRef(null);
-    // Sem 'once: true' para que a animação resete ao rolar para cima/baixo
     const isInView = useInView(ref, { amount: 0.1 });
 
     // Estado para o Modal/Lightbox
@@ -28,6 +38,20 @@ const GridGallerySection: React.FC = () => {
         setSelectedImageIndex(index);
         setIsModalOpen(true);
     };
+
+    // 🚨 CORREÇÃO DEFINITIVA: Mapear os dados para garantir que o 'id' seja number para o Modal.
+    // Usamos useMemo para garantir que o mapeamento só ocorra uma vez.
+    const modalImages = useMemo(() => {
+        return GRID_GALLERY_DATA.map((item, index) => ({
+            // Forçamos o ID a ser o índice (number) para satisfazer o ImageItem[]
+            id: index,
+            url: item.url,
+            description: item.description,
+            // Copie aqui outros campos que o seu Modal possa exigir (ex: theme, ringColor, etc.)
+            // Exemplo: theme: item.theme,
+        }));
+    }, []);
+
 
     // Variantes da Animação do Contêiner
     const containerVariants = {
@@ -95,7 +119,8 @@ const GridGallerySection: React.FC = () => {
                 isOpen={isModalOpen}
                 setIsOpen={setIsModalOpen}
                 initialIndex={selectedImageIndex}
-                    images={GRID_GALLERY_DATA}
+                // 🚨 USAR O ARRAY CORRIGIDO
+                images={modalImages}
             />
         </section>
     );
