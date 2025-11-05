@@ -1,8 +1,9 @@
-// src/components/Header.tsx - CÓDIGO FINAL COMPLETO E CORRIGIDO
+// src/components/Header.tsx - CÓDIGO FINAL COMPLETO E CORRIGIDO (Tipagem forçada)
 
 "use client";
 import React from 'react';
-import { motion } from 'framer-motion';
+// 🚨 Importar Variants para tipar headerVariants
+import { motion, Variants } from 'framer-motion';
 import { useTheme } from '@/context/ThemeContext';
 import useScrollDirection from '@/hooks/useScrollDirection';
 
@@ -13,17 +14,17 @@ const Header: React.FC = () => {
     const isScrolled = scrollDirection !== 'initial';
 
     // Variantes de animação para aparecer/sumir
-    const headerVariants = {
+    // 🚨 TIPAR headerVariants explicitamente como Variants do Framer Motion
+    const headerVariants: Variants = {
         visible: {
             y: 0,
             opacity: 1,
-            // 🚨 CORREÇÃO DE TIPAGEM: Usar a curva de Bézier em vez da string "easeInOut"
+            // Usamos a curva de Bézier, mas tipamos o objeto inteiro para forçar o TS
             transition: { duration: 0.3, ease: [0.42, 0, 0.58, 1] }
         },
         hidden: {
             y: -100, // Move 100px para cima para esconder
             opacity: 0,
-            // 🚨 CORREÇÃO DE TIPAGEM: Usar a curva de Bézier
             transition: { duration: 0.3, ease: [0.42, 0, 0.58, 1] }
         },
     };
