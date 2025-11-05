@@ -1,17 +1,15 @@
-// src/components/Header.tsx - CÓDIGO FINAL COM SMART HEADER
+// src/components/Header.tsx - CÓDIGO FINAL COMPLETO E CORRIGIDO
 
 "use client";
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useTheme } from '@/context/ThemeContext';
-import useScrollDirection from '@/hooks/useScrollDirection'; // 🚨 NOVO HOOK
+import useScrollDirection from '@/hooks/useScrollDirection';
 
+// O componente Header não recebe props, então ele volta a ser um React.FC simples.
 const Header: React.FC = () => {
     const { currentTheme } = useTheme();
-    // 🚨 Usa o hook para saber a direção do scroll
     const scrollDirection = useScrollDirection(10);
-
-    // Define a classe de fundo do header (transparente no topo, sólido ao rolar)
     const isScrolled = scrollDirection !== 'initial';
 
     // Variantes de animação para aparecer/sumir
@@ -19,22 +17,21 @@ const Header: React.FC = () => {
         visible: {
             y: 0,
             opacity: 1,
-            transition: { duration: 0.3, ease: "easeInOut" }
+            // 🚨 CORREÇÃO DE TIPAGEM: Usar a curva de Bézier em vez da string "easeInOut"
+            transition: { duration: 0.3, ease: [0.42, 0, 0.58, 1] }
         },
         hidden: {
             y: -100, // Move 100px para cima para esconder
             opacity: 0,
-            transition: { duration: 0.3, ease: "easeInOut" }
+            // 🚨 CORREÇÃO DE TIPAGEM: Usar a curva de Bézier
+            transition: { duration: 0.3, ease: [0.42, 0, 0.58, 1] }
         },
     };
 
-    // Lógica para determinar o estado de animação:
     const animateState = (scrollDirection === 'down' && isScrolled) ? 'hidden' : 'visible';
-
 
     return (
         <motion.header
-            // 🚨 Aplica as variantes e o estado de animação
             initial="visible"
             animate={animateState}
             variants={headerVariants}
@@ -58,8 +55,6 @@ const Header: React.FC = () => {
                     <a href="#portfolio" className="hover:opacity-75 transition">Portfólio</a>
                     <a href="#contato" className="hover:opacity-75 transition">Contato</a>
                 </nav>
-
-                {/* 🚨 Adicione um menu Hamburger para mobile se desejar, aqui usamos a versão desktop */}
             </div>
         </motion.header>
     );
