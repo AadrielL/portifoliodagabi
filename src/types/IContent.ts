@@ -5,7 +5,7 @@ export interface IPhotoItem {
     id: string;
     url: string; // Caminho da imagem (ex: /1.jpeg)
 
-    // 🚨 CORREÇÃO: Adicionamos os temas Sazonais para resolver o erro.
+    // 🚨 ADICIONADO o tema 'Editorial' para corresponder ao novo tema de cor
     theme: 'Editorial' | 'Beauty' | 'Comercial' | 'Projeto' | 'Spring' | 'Summer' | 'Autumn' | 'Winter';
 
     description: string;

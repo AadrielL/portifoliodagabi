@@ -1,17 +1,19 @@
-// src/data/GalleryData.ts - CÓDIGO FINAL QUE DEVE SER MANTIDO
+// src/data/GalleryData.ts - CÓDIGO FINAL COM DESCRIÇÕES GENÉRICAS
 
 import { IPhotoItem } from '@/types/IContent';
 
 const DEFAULT_THEME = 'Editorial';
-const DEFAULT_DESC = 'Foto de portfólio';
+// 🚨 MUDANÇA: Descrição padrão vazia para não aparecer nos cards
+const DEFAULT_DESC = '';
 
 // --- DEFINIÇÃO DAS FOTOS (Para Reutilização) ---
 
 const ALL_PHOTOS: Record<string, IPhotoItem> = {
-    SPRING: { id: 'intro-1', url: '/images/21.jpeg', theme: 'Spring', description: 'Retrato floral (Primavera)' },
-    SUMMER: { id: 'intro-2', url: '/images/9.jpeg', theme: 'Summer', description: 'Ensaio de Verão (Verão)' },
-    AUTUMN: { id: 'intro-3', url: '/images/5.jpeg', theme: 'Autumn', description: 'Luz de Outono (Outono)' },
-    WINTER: { id: 'intro-4', url: '/images/22.jpeg', theme: 'Winter', description: 'Ambiente de Inverno (Inverno)' },
+    // 🚨 DESCRIÇÕES DOS CARDS 3D AGORA SÃO VAZIAS
+    SPRING: { id: 'intro-1', url: '/images/21.jpeg', theme: 'Editorial', description: DEFAULT_DESC },
+    SUMMER: { id: 'intro-2', url: '/images/9.jpeg', theme: 'Editorial', description: DEFAULT_DESC },
+    AUTUMN: { id: 'intro-3', url: '/images/5.jpeg', theme: 'Editorial', description: DEFAULT_DESC },
+    WINTER: { id: 'intro-4', url: '/images/22.jpeg', theme: 'Editorial', description: DEFAULT_DESC },
 
     // As 16 fotos restantes para o Grid (Exemplo)
     GRID_A: { id: 'grid-5', url: '/images/5.jpeg', theme: DEFAULT_THEME, description: DEFAULT_DESC },

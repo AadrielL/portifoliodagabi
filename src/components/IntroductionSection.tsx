@@ -1,4 +1,4 @@
-// src/components/IntroductionSection.tsx - Versão FINAL com Foco em Crescimento
+// src/components/IntroductionSection.tsx - Versão FINAL com Foco Simples
 
 "use client";
 import React from 'react';
@@ -11,16 +11,11 @@ import { useTheme } from '@/context/ThemeContext';
 const IntroductionSection: React.FC = () => {
     const { currentTheme } = useTheme();
 
-    // Texto de Descrição da Gabriela (AGORA COM FOCO EM DETERMINAÇÃO E CRESCIMENTO)
+    // Texto de apresentação simples
     const descriptionText = (
-        <>
-            <p className="text-xl leading-relaxed mb-6 text-gray-700">
-                Olá! Eu sou Gabriela Carneiro, jornalista e modelo. Sou uma mulher que sabe o que quer e está sempre buscando crescimento, tanto pessoal quanto social. Levo essa determinação para cada projeto.
-            </p>
-            <p className="text-xl leading-relaxed text-gray-700">
-                Meu objetivo é usar minha beleza e personalidade para transparecer o que a marca deseja atingir nas pessoas. Acredito no poder da imagem que é genuína, inspiradora e alinhada com propósitos claros.
-            </p>
-        </>
+        <p className="text-xl leading-relaxed mb-6 text-gray-700">
+            Modelo e jornalista. Foco em projetos que valorizam a beleza natural e a comunicação autêntica.
+        </p>
     );
 
     return (
@@ -40,13 +35,14 @@ const IntroductionSection: React.FC = () => {
                         Gabriela <span className="text-gray-900">Carneiro</span>
                     </h1>
 
-                    {/* Renderiza o conteúdo focado em crescimento */}
+                    {/* Renderiza o conteúdo simplificado */}
                     {descriptionText}
 
                     {/* Botão de Contato */}
                     <motion.a
                         href="#contato"
-                        className={`mt-6 inline-block ${currentTheme.buttonBg} text-white text-lg font-bold py-3 px-8 rounded-full shadow-xl transition transform hover:scale-105`}
+                        // 🚨 MUDANÇA AQUI: Usa buttonText do tema para garantir contraste
+                        className={`mt-6 inline-block ${currentTheme.buttonBg} ${currentTheme.buttonText} text-lg font-bold py-3 px-8 rounded-full shadow-xl transition transform hover:scale-105`}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                     >

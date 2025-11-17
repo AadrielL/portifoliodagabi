@@ -1,47 +1,52 @@
-// src/constants/Themes.ts - CÓDIGO FINAL COMPLETO E CORRIGIDO
+// src/constants/Themes.ts - CÓDIGO FINAL COM PALETA PROFISSIONAL E NOMES ATUALIZADOS
 
 export type Theme = {
     bgGradient: string;
     primaryText: string;
     buttonBg: string;
+    buttonText: string;
     ringColor: string;
-    // 🚨 CORREÇÃO: Propriedade headerBgScrolled adicionada
     headerBgScrolled: string;
 };
 
 export const THEME_CLASSES: Record<string, Theme> = {
-    // 1. INVERNO: Baseado na Paleta Azul/Neve
-    WINTER: {
-        bgGradient: 'from-gray-100 to-blue-100',
-        primaryText: 'text-blue-900',
-        buttonBg: 'bg-blue-400',
-        ringColor: 'ring-blue-300',
-        headerBgScrolled: 'bg-white/90', // 🚨 NOVO VALOR
+    // 🚨 1. EDITORIAL (Black & White Drama)
+    EDITORIAL: {
+        bgGradient: 'from-black to-gray-800',
+        primaryText: 'text-white',
+        buttonBg: 'bg-white',
+        buttonText: 'text-black',
+        ringColor: 'ring-gray-600',
+        headerBgScrolled: 'bg-black/90',
     },
-    // 2. VERÃO: Baseado na Paleta de Piscina
-    SUMMER: {
-        bgGradient: 'from-pink-100 to-cyan-200',
-        primaryText: 'text-gray-700',
-        buttonBg: 'bg-orange-500',
-        ringColor: 'ring-orange-400',
-        headerBgScrolled: 'bg-white/90', // 🚨 NOVO VALOR
+    // 2. LUXO CLÁSSICO (Gelo & Grafite)
+    CLASSIC: {
+        bgGradient: 'from-gray-100 to-gray-700',
+        primaryText: 'text-gray-900',
+        buttonBg: 'bg-gray-800',
+        buttonText: 'text-white',
+        ringColor: 'ring-gray-400',
+        headerBgScrolled: 'bg-white/90',
     },
-    // 3. OUTONO: Baseado na Paleta Terrosa
-    AUTUMN: {
-        bgGradient: 'from-amber-50 to-red-100',
-        primaryText: 'text-red-900',
-        buttonBg: 'bg-orange-600',
-        ringColor: 'ring-orange-500',
-        headerBgScrolled: 'bg-white/90', // 🚨 NOVO VALOR
+    // 3. NUDE (Nude & Bege)
+    NUDE: {
+        bgGradient: 'from-white to-rose-100',
+        primaryText: 'text-stone-700',
+        buttonBg: 'bg-rose-400',
+        buttonText: 'text-white',
+        ringColor: 'ring-rose-300',
+        headerBgScrolled: 'bg-white/90',
     },
-    // 4. PRIMAVERA: Baseado na imagem de Jardim Florido
-    SPRING: {
-        bgGradient: 'from-white to-pink-100',
-        primaryText: 'text-purple-700',
-        buttonBg: 'bg-fuchsia-500',
-        ringColor: 'ring-fuchsia-400',
-        headerBgScrolled: 'bg-white/90', // 🚨 NOVO VALOR
+    // 4. DOURADO (Capim Dourado Suave)
+    GOLD: {
+        bgGradient: 'from-yellow-300 to-amber-600',
+        primaryText: 'text-black',
+        buttonBg: 'bg-amber-800',
+        buttonText: 'text-white',
+        ringColor: 'ring-yellow-600',
+        headerBgScrolled: 'bg-yellow-100/90',
     },
 };
 
-export const THEME_KEYS = ['SPRING', 'SUMMER', 'AUTUMN', 'WINTER'];;
+// 🚨 NOMES DE TEMA ATUALIZADOS
+export const THEME_KEYS = ['EDITORIAL', 'CLASSIC', 'NUDE', 'GOLD'];
